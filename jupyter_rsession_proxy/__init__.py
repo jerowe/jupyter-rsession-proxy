@@ -3,6 +3,10 @@ import subprocess
 import getpass
 import shutil
 
+def get_r_executable():
+    return shutil.which('R'):
+
+
 def get_rstudio_executable(prog):
     # Find prog in known locations
     other_paths = [
@@ -68,11 +72,9 @@ def setup_rsession():
     def _get_cmd(port):
         return [
             get_rstudio_executable('rsession'),
-            '--standalone=1',
-            '--program-mode=server',
-            '--log-stderr=1',
-            '--session-timeout-minutes=0',
-            '--user-identity=' + getpass.getuser(),
+            '--rsession-which-r=' + get_r_executable(), 
+            '--server-daemonize=0',
+            '--server-user=' + getpass.getuser(),
             '--www-port=' + str(port)
         ]
 

@@ -72,9 +72,11 @@ def setup_rsession():
     def _get_cmd(port):
         return [
             get_rstudio_executable('rsession'),
-            '--rsession-which-r=' + get_r_executable(), 
-            '--server-daemonize=0',
-            '--server-user=' + getpass.getuser(),
+            '--standalone=1',
+            '--program-mode=server',
+            '--log-stderr=1',
+            '--session-timeout-minutes=0',
+            '--user-identity=' + getpass.getuser(),
             '--www-port=' + str(port)
         ]
 

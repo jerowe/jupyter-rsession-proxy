@@ -4,7 +4,7 @@ import getpass
 import shutil
 
 def get_r_executable():
-    return shutil.which('R'):
+    return shutil.which('R')
 
 
 def get_rstudio_executable(prog):
